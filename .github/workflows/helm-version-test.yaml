@@ -1,0 +1,21 @@
+name: Helm Version Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  helm-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (not really needed here)
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4.3.0
+        with:
+          version: 'v.3.18.4'
+        id: install
+
+      - name: Show Helm Version
+        run: helm version
+
